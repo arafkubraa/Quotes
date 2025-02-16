@@ -1,0 +1,28 @@
+
+   <h3 *ngIf="products; else: noProduct"> {{title}} </h3>
+
+
+  <div class="row">
+
+    <ng-template #noProduct>
+      <div class="alert alert-primary" role="alert">
+        Bu kategoride alıntı yoktur!
+      </div>
+    </ng-template>
+
+    <div *ngFor="let product of products" class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="product.imageUrl" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">{{product.name}}</h4>
+        <p class="card-text">{{product.quote}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+
+
