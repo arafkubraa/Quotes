@@ -4,7 +4,8 @@ constructor(
     public name: string,
     public categoryId: number,
     public quote: string,
-    public imageUrl: string
+    public imageUrl: string,
+    public siteUrl:string
 
   ) {}
 
