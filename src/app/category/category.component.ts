@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Category } from './category';
+import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-category',
@@ -8,25 +9,20 @@ import { Category } from './category';
     CommonModule
   ],
   templateUrl: './category.component.html',
-  styleUrl: './category.component.css'
+  styleUrl: './category.component.css',
+  providers:[CategoryService]
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() {}
+  constructor(private categoryService:CategoryService) {}
   title=" Kategoriler"
 
-  categories: Category[]= [
-    {id:1, name: " Dizi Alıntıları" },
-    {id:2, name: " Film Alıntıları" },
-    {id:3, name: " Kitap Alıntıları" },
-    {id:4, name: " Sözler" },
-    {id:5, name: " Şarkı Sözleri" }
-
-
-
-  ]
+  categories!: Category[];
 
 ngOnInit(): void {
+  this.categoryService.getCategories().subscribe(data=>{
+    this.categories=data
+   })
 
 }
 }
