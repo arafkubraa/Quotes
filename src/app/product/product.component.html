@@ -1,7 +1,26 @@
 
    <h3 *ngIf="products; else: noProduct"> {{title}} </h3>
 
+   <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="cardName"
+      placeholder="Aramak istediğiniz alıntı metnini giriniz."
+      [(ngModel)]="filterText">
 
+    <small *ngIf="filterText;else:noFilterText" class="form-text text-muted">
+      Şu an <strong>{{filterText}}</strong> aradınız
+
+    </small>
+    <ng-template #noFilterText>
+      <div class="inspiration-message" role="alert">
+        Onlara en çok ihtiyacı olanlar için ilham verici ve ilgili alıntılar.
+      </div>
+    </ng-template>
+  </div>
+
+<br>
   <div class="row">
 
     <ng-template #noProduct>
@@ -10,7 +29,7 @@
       </div>
     </ng-template>
 
-    <div *ngFor="let product of products" class="card" style="width: 18rem;">
+    <div *ngFor="let product of products | productFilter:filterText" class="card" style="width: 18rem;">
       <img class="card-img-top" [src]="product.imageUrl" alt="...">
       <div class="card-body">
         <h4 class="card-title">{{product.name}}</h4>

@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Product } from './product';
+import { ProductFilterPipe } from "./product-filter.pipe";
 
 
 @Component({
   selector: 'app-product',
   imports: [
-    CommonModule
-  ],
+    CommonModule,
+    FormsModule,
+    ProductFilterPipe
+],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -16,6 +20,7 @@ export class ProductComponent implements OnInit {
   constructor() {  }
 
   title= "Quotes"
+  filterText="m"
 
   products: Product[]=[
     {id:1,name:"Arcane",categoryId:1,quote:"“Bazen ileri adım atmak, birkaç şeyi geride bırakmak demektir.“",imageUrl:"https://i.pinimg.com/736x/48/59/59/4859596fddfd80dffbf8f512bb2f30aa.jpg"},
