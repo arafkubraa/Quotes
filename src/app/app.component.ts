@@ -11,5 +11,5 @@ import { ProductComponent } from "./product/product.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Quotes';
+  title = 'Alıntılar';
 }
